@@ -11,7 +11,22 @@ import ListAppointments from './ListAppointments';
 import SearchAppointments from './SearchAppointments';
 
 class App extends Component {
+
+  state = {
+    appointments: []
+  }
+
+  componentDidMount() {
+
+    fetch('./data.json')
+      .then(response => response.json())
+      .then(appointments => this.setState({ appointments }))
+      .catch(error => console.log(error))
+  }
+
   render() {
+    const { appointments } = this.state
+
     return (
       <main className="page bg-white" id="petratings">
         <Container>
@@ -20,7 +35,7 @@ class App extends Component {
               <Container>
                 <AddAppointments />
                 <SearchAppointments />
-                <ListAppointments />
+                <ListAppointments appointments={appointments} />
               </Container>
             </Col>
           </Row>
@@ -28,6 +43,7 @@ class App extends Component {
       </main>
     );
   }
+
 }
 
 export default App;
