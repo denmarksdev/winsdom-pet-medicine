@@ -1,4 +1,4 @@
-.add-appointment .card-body {
+.add-appointment {
   display: none;
 }
 
@@ -10,6 +10,7 @@
 .appointment-list {
   font-size: 1.1em;
 }
+
 
 .appointment-list .pet-item {
   border-bottom: 1px dotted gray;
@@ -25,6 +26,11 @@
   font-size: 1.3em;
   line-height: 100%;
 }
+
+.pet-delete {
+  cursor: pointer;
+}
+
 
 .appointment-list .label-item {
   font-weight: 600;

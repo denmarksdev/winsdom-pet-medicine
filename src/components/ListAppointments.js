@@ -4,12 +4,14 @@ import Moment from 'react-moment';
 import {
     Table,
     Button,
+    Alert
 } from 'react-bootstrap'
 
 export default class ListAppointments extends React.Component {
 
     render() {
         const { appointments } = this.props
+        const withouAppointments = (appointments.length === 0)
         return (
             <Fragment>
                 <h3 className='mt-3 mb-3 border-top pb-2' >Appointments</h3>
@@ -26,7 +28,10 @@ export default class ListAppointments extends React.Component {
                             appointments.map((item, i) =>
                                 <tr key={i} >
                                     <td className='text-center' >
-                                        <Button variant='danger' className="pet-delete">
+                                        <Button
+                                            onClick={() => this.props.deleteAppointment(item)}
+                                            variant='danger'
+                                             className="pet-delete">
                                             <FaTimes />
                                         </Button>
                                     </td>
@@ -53,6 +58,10 @@ export default class ListAppointments extends React.Component {
                         }
                     </tbody>
                 </Table>
+                {
+                    withouAppointments &&
+                    <Alert variant='danger' >No appointments found!</Alert>
+                }
             </Fragment>
         )
     }
