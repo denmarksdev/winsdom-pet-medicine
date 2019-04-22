@@ -16,7 +16,10 @@ class App extends Component {
 
   state = {
     appointments: [],
-    formDisplay: false
+    formDisplay: false,
+    orderBy: 'petName',
+    orderDir: 'asc',
+    queryText: '',
   }
 
   componentDidMount() {
@@ -35,15 +38,34 @@ class App extends Component {
   onAddAppointment = apt => {
     let { appointments } = this.state;
     appointments.unshift(apt)
-    this.setState({appointments, formDisplay:false})
+    this.setState({ appointments, formDisplay: false })
   }
 
-  onToggleForm = ()=> {
+  onChangeOrder = (orderBy, orderDir) => {
+    this.setState({
+      orderBy,
+      orderDir
+    })
+  }
+
+  onToggleForm = () => {
     this.setState({ formDisplay: !this.state.formDisplay })
   }
 
+  onSearchApts = queryText => {
+    this.setState({ queryText })
+  }
+
   render() {
-    const { appointments, formDisplay } = this.state
+    const {
+      appointments,
+      formDisplay,
+      orderBy,
+      orderDir,
+    } = this.state
+
+    let fiterApts = this.filterApt(appointments, orderBy);
+
     return (
       <main className="page bg-white" id="petratings">
         <Container>
@@ -51,13 +73,17 @@ class App extends Component {
             <Col md={12} className='bg-white' >
               <Container>
                 <AddAppointments
-                  toggleForm={ this.onToggleForm}
+                  toggleForm={this.onToggleForm}
                   addAppointment={this.onAddAppointment}
                   formDisplay={formDisplay} />
-                <SearchAppointments />
+                <SearchAppointments
+                  orderBy={orderBy}
+                  orderDir={orderDir}
+                  changeOrder={this.onChangeOrder}
+                  searchApts={this.onSearchApts} />
                 <ListAppointments
                   deleteAppointment={this.onDeleteAppointment}
-                  appointments={appointments} />
+                  appointments={fiterApts} />
               </Container>
             </Col>
           </Row>
@@ -66,6 +92,44 @@ class App extends Component {
     );
   }
 
+  filterApt(appointments, orderBy) {
+    const { orderDir, queryText } = this.state
+
+    let order;
+    let filteredApts = appointments;
+    if (orderDir === 'asc') {
+      order = 1;
+    }
+    else {
+      order = -1;
+    }
+    filteredApts = filteredApts.sort((a, b) => {
+      if (a[orderBy].toLowerCase() <
+        b[orderBy].toLowerCase()) {
+        return -1 * order;
+      }
+      else {
+        return 1 * order;
+      }
+    }).filter(item => {
+      return (
+        item.petName
+          .toLowerCase()
+          .includes(queryText.toLocaleLowerCase())
+        ||
+        item.ownerName
+          .toLowerCase()
+          .includes(queryText.toLocaleLowerCase())
+        ||
+        item.aptNotes
+          .toLowerCase()
+          .includes(queryText.toLocaleLowerCase())
+      )
+
+    });
+
+    return filteredApts;
+  }
 }
 
 export default App;
