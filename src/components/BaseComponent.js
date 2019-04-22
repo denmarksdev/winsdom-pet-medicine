@@ -5,11 +5,11 @@ export default class BaseComponent extends React.Component {
     onChange = name => event => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        this.setPropertyInState({ ... this.state }, name, value)
+        this.setPropertyInState({...this.state}, name, value)
     }
 
     onChangeValue = (name, value) => {
-        this.setPropertyInState({ ... this.state }, name, value)
+        this.setPropertyInState({...this.state}, name, value)
     }
 
     setPropertyInState = (properties, path, value) => {

@@ -31,18 +31,37 @@ export default class ListAppointments extends React.Component {
                                         <Button
                                             onClick={() => this.props.deleteAppointment(item)}
                                             variant='danger'
-                                             className="pet-delete">
+                                            className="pet-delete">
                                             <FaTimes />
                                         </Button>
                                     </td>
                                     <td>
-                                        <span className="pet-name">{item.petName}</span>
+                                        <span className="pet-name"
+                                            contentEditable
+                                            suppressContentEditableWarning
+                                            onBlur={
+                                                e => this.props.updateInfo('petName', e.target.innerText, item)
+                                            }>{item.petName}</span>
                                         <div className="pet-info media-body">
                                             <div className="owner-name">
                                                 <span className="label-item"><strong>Owner: </strong></span>
-                                                <span>{item.ownerName} </span>
+                                                <span
+                                                    contentEditable
+                                                    suppressContentEditableWarning
+                                                    onBlur={
+                                                        e => this.props.updateInfo('ownerName', e.target.innerText, item)
+                                                    }>
+                                                    {item.ownerName}
+                                                </span>
                                             </div>
-                                            <div className="apt-notes">{item.aptNotes}</div>
+                                            <div className="apt-notes">
+                                                <span
+                                                    contentEditable
+                                                    suppressContentEditableWarning
+                                                    onBlur={
+                                                        e => this.props.updateInfo('aptNotes', e.target.innerText, item)
+                                                    }>{item.aptNotes}</span>
+                                            </div>
                                         </div>
                                     </td>
                                     <td className='text-center'>

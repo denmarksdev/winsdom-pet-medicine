@@ -52,6 +52,15 @@ class App extends Component {
     this.setState({ formDisplay: !this.state.formDisplay })
   }
 
+  onUpdateInfo = (property, value, item) => {
+    let { appointments } = this.state;
+    let aptIndex = appointments.indexOf(item);
+    if (aptIndex === -1) return;
+
+    appointments[aptIndex][property] = value
+    this.setState({ appointments })
+  }
+
   onSearchApts = queryText => {
     this.setState({ queryText })
   }
@@ -83,7 +92,8 @@ class App extends Component {
                   searchApts={this.onSearchApts} />
                 <ListAppointments
                   deleteAppointment={this.onDeleteAppointment}
-                  appointments={fiterApts} />
+                  appointments={fiterApts}
+                  updateInfo={this.onUpdateInfo} />
               </Container>
             </Col>
           </Row>
