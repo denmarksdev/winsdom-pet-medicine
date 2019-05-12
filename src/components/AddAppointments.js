@@ -1,12 +1,12 @@
 import React from 'react';
 import BaseComponent from './BaseComponent';
 import { FaPlus } from 'react-icons/fa'
+import Moment  from 'react-moment';
 import {
-
     Card,
     Form,
     Col,
-    Button
+    Button,
 } from 'react-bootstrap'
 
 export default class AddAppointments extends BaseComponent {
@@ -23,20 +23,41 @@ export default class AddAppointments extends BaseComponent {
     }
 
     onSubmit = event => {
+
         event.preventDefault();
         const { apt, aptDate, aptTime } = this.state;
         apt.aptDate = `${aptDate} ${aptTime}`
-        this.props.addAppointment(apt)
-        this.setState({
-            apt: {
-                petName: '',
-                ownerName: '',
-                aptNotes: '',
-                aptDate: ''
-            },
-            aptDate: '',
-            aptTime: ''
-        })
+
+        try {
+            this.validate(apt);
+            this.props.addAppointment(apt)
+            this.setState({
+                apt: {
+                    petName: '',
+                    ownerName: '',
+                    aptNotes: '',
+                    aptDate: ''
+                },
+                aptDate: '',
+                aptTime: ''
+            })
+
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
+    validate(apt) {
+        if (!apt.petName)
+            throw new Error('Invalid Pet Name');
+        if (!apt.ownerName)
+            throw new Error('Invalid Owner name');
+        if (!apt.aptNotes)
+            throw new Error('Invalid Appointment');
+
+        const resultDate =  new Date (apt.aptDate ) 
+        if (resultDate == 'Invalid Date')    
+            throw new Error('Invalid Date');
     }
 
     render() {
