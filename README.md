@@ -1,5 +1,5 @@
 # Winsdom Pet Medicine
-Application for register appointments in React JS
+Application for register Pet's appointments in React JS
 
 # Requirements
 
