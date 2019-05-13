@@ -9,7 +9,7 @@ Application for register Pet's appointments in React JS
 # Usage
 
 1. Run the commmad `yarn` or `npm i` to install dependencies.
-2. Run the command `yarn start` or `npm start to run the application`.
+2. Run the command `yarn start` or `npm start` to run the application.
 
 # Screenshot
 
