@@ -9,6 +9,16 @@ import {
 
 export default class ListAppointments extends React.Component {
 
+    renderAgeGroup(value){
+        switch (value) {
+            case 1: return 'Kid'
+            case 2: return 'Adult'
+            case 3: return 'Old'
+            default:
+                return ''
+        }
+    }
+
     render() {
         const { appointments } = this.props
         const withouAppointments = (appointments.length === 0)
@@ -62,6 +72,7 @@ export default class ListAppointments extends React.Component {
                                                         e => this.props.updateInfo('aptNotes', e.target.innerText, item)
                                                     }>{item.aptNotes}</span>
                                             </div>
+                                            { this.renderAgeGroup(item.ageGroup) }
                                         </div>
                                     </td>
                                     <td className='text-center'>

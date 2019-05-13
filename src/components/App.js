@@ -135,7 +135,6 @@ class App extends Component {
           .toLowerCase()
           .includes(queryText.toLocaleLowerCase())
       )
-
     });
 
     return filteredApts;

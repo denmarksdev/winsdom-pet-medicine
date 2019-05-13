@@ -1,13 +1,21 @@
 import React from 'react';
 import BaseComponent from './BaseComponent';
 import { FaPlus } from 'react-icons/fa'
-import Moment  from 'react-moment';
+
 import {
     Card,
     Form,
     Col,
     Button,
 } from 'react-bootstrap'
+
+import FormRadio from './FormRadio';
+
+const ageGroup = [
+    {label:'kid', value:1},
+    {label:'Adult', value:2},
+    {label:'Old', value:3}
+]
 
 export default class AddAppointments extends BaseComponent {
 
@@ -16,7 +24,8 @@ export default class AddAppointments extends BaseComponent {
             petName: '',
             ownerName: '',
             aptNotes: '',
-            aptDate: ''
+            aptDate: '',
+            ageGroup:1
         },
         aptDate: '',
         aptTime: ''
@@ -36,7 +45,8 @@ export default class AddAppointments extends BaseComponent {
                     petName: '',
                     ownerName: '',
                     aptNotes: '',
-                    aptDate: ''
+                    aptDate: '',
+                    ageGroup:1,
                 },
                 aptDate: '',
                 aptTime: ''
@@ -56,7 +66,7 @@ export default class AddAppointments extends BaseComponent {
             throw new Error('Invalid Appointment');
 
         const resultDate =  new Date (apt.aptDate ) 
-        if (resultDate == 'Invalid Date')    
+        if (resultDate.toString() === 'Invalid Date')    
             throw new Error('Invalid Date');
     }
 
@@ -147,7 +157,16 @@ export default class AddAppointments extends BaseComponent {
                                 </Form.Group>
                             </Col>
                         </Form.Row>
-
+                        <Form.Row>
+                         </Form.Row>
+                           <Col sm={12} >
+                                <FormRadio 
+                                    label='Range Group'
+                                    items={ageGroup} 
+                                    value={apt.ageGroup}
+                                    onClick={ value=> this.onChangeValue('apt.ageGroup', Number(value)) }
+                                    />
+                           </Col>
                         <Form.Row>
                             <Col md={10} className='d-flex flex-row-reverse'  >
                                 <Form.Group>

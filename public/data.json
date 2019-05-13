@@ -3,49 +3,57 @@
         "petName": "Pepe",
         "ownerName": "Reggie Tupp",
         "aptNotes": "It's time for this rabbit's post spaying surgery checkup",
-        "aptDate": "2018-11-28 13:30"
+        "aptDate": "2018-11-28 13:30",
+        "ageGroup":1
     },
     {
         "petName": "Rio",
         "ownerName": "Philip Ransu",
         "aptNotes": "Rio is up for his next round of vaccinations",
-        "aptDate": "2018-11-28 10:15"
+        "aptDate": "2018-11-28 10:15",
+        "ageGroup":1
     },
     {
         "petName": "Scooter",
         "ownerName": "Zachary Heilyn",
         "aptNotes": "Scooter has been pawing at his ear and may have an ear infection",
-        "aptDate": "2018-11-28 14:45"
+        "aptDate": "2018-11-28 14:45",
+        "ageGroup":1
     },
     {
         "petName": "Nadalee",
         "ownerName": "Krystle Valerija",
         "aptNotes": "This dog is coming in for his monthly nail trim and grooming",
-        "aptDate": "2018-11-28 16:00"
+        "aptDate": "2018-11-28 16:00",
+        "ageGroup":2
     },
     {
         "petName": "Scout",
         "ownerName": "Nicolette Bardeau",
         "aptNotes": "This dog is coming in for his annual checkup and vaccinations",
-        "aptDate": "2018-11-28 9:00"
+        "aptDate": "2018-11-28 9:00",
+        "ageGroup":2
     },
     {
         "petName": "Zera",
         "ownerName": "Austin Finnagan",
         "aptNotes": "This iguana's is showing signs of dementia associated with his old age",
-        "aptDate": "2018-11-29 13:15"
+        "aptDate": "2018-11-29 13:15",
+        "ageGroup":2
     },
     {
         "petName": "Oddball",
         "ownerName": "Howie Cadell",
         "aptNotes": "Oddball has a hard lump on right front foot",
-        "aptDate": "2018-11-29 10:00"
+        "aptDate": "2018-11-29 10:00",
+        "ageGroup":2
     },
     {
         "petName": "Millie",
         "ownerName": "Freya Terray",
         "aptNotes": "MIllie has exhibited signs of an upset stomach and is not eating regularly",
-        "aptDate": "2018-11-29 11:45"
+        "aptDate": "2018-11-29 11:45",
+        "ageGroup":2
     },
     {
         "petName": "Fluffy",

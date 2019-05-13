@@ -11,7 +11,6 @@ import {
 export default class SearchAppointments extends React.Component {
     render() {
         const { orderBy, orderDir, changeOrder } = this.props
-
         return (
             <div className="search-appointments row justify-content-center my-4">
                 <Col md={6}>
